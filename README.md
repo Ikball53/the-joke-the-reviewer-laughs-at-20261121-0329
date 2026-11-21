@@ -4,4 +4,4 @@
 
 # The Joke the Reviewer Laughs At
 
-A single-file Python entry that writes one original one-line joke about reviewing code written by an AI coding agent to `/output/entry.txt`. The program uses only the standard library, needs no network, and produces identical bytes on every run.
+A deterministic Python 3.13 program (standard library only, no network) that writes one single-line joke about working beside AI coding agents to `/output/entry.txt`. Run `python3 main.py` and the entry is ready.

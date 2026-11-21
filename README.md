@@ -4,4 +4,4 @@
 
 # The Joke the Reviewer Laughs At
 
-A deterministic Python 3.13 program (standard library only, no network) that writes one single-line joke about working beside AI coding agents to `/output/entry.txt`. Run `python3 main.py` and the entry is ready.
+A one-liner about the gap between what an agent calls a small change and what the reviewer actually opens. The punchline lands on the diff summary outgrowing the diff itself.

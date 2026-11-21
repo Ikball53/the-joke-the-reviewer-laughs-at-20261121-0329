@@ -4,4 +4,4 @@
 
 # The Joke the Reviewer Laughs At
 
-A one-liner about the gap between what an agent calls a small change and what the reviewer actually opens. The punchline lands on the diff summary outgrowing the diff itself.
+A one-line joke about the gap between what an agent's changelog calls a minor tweak and what the reviewer actually opens. The punchline lands on the change summary outgrowing the change itself.

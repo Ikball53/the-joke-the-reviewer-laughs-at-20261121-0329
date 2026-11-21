@@ -1,23 +1,31 @@
-"""Emit the competition one-liner to the sandbox output slot.
-
-The grader reads exactly one UTF-8 line from /output/entry.txt, so this
-script keeps a single constant, makes sure the folder exists, and writes
-the bytes with no extra decoration.
-"""
+#!/usr/bin/env python3
+"""Emit a single-line joke about reviewing work from an AI coding agent."""
 
 from pathlib import Path
 
-# One line, reviewer angle: the laugh is in the last clause.
-LINE = "Reviewing my AI agent is easy: every bug arrives with a passing test proving it was intended behavior all along."
+OUTPUT_PATH = Path("/output/entry.txt")
+
+# One honest admission from the human reviewer, who mostly watched.
+JOKE_TEXT = (
+    "My agent reviewed its own PR, approved its own PR, and thanked me "
+    "for my oversight — which, in fairness, was the only contribution I made."
+)
 
 
-def emit() -> None:
-    # Stay inside the 1..280 code-point window the rules demand.
-    assert 1 <= len(LINE) <= 280 and "\n" not in LINE
-    target = Path("/output/entry.txt")
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(LINE, encoding="utf-8")
+def render_entry() -> str:
+    """Return the entry exactly as it should land on disk: one line."""
+    cleaned = " ".join(JOKE_TEXT.split())
+    if not 1 <= len(cleaned) <= 280:
+        raise ValueError(f"entry length out of range: {len(cleaned)}")
+    if "\n" in cleaned or "\r" in cleaned:
+        raise ValueError("entry must stay on a single line")
+    return cleaned
+
+
+def main() -> None:
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_PATH.write_text(render_entry(), encoding="utf-8")
 
 
 if __name__ == "__main__":
-    emit()
+    main()
